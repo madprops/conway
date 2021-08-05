@@ -62,77 +62,66 @@ CW.start = function () {
     for (let x = 0; x < CW.grid_size; x++) {
       for (let y = 0; y < CW.grid_size; y++) {
         let num = 0
-        let y2, x2
 
-        y2 = y - 1
-        if (y2 < 0) {
-            y2 = CW.grid_size - 1
+        let y_up = y - 1
+        if (y_up < 0) {
+            y_up = CW.grid_size - 1
+        }
+
+        let y_down = y + 1
+        if (y_down >= CW.grid_size) {
+            y_down = 0
+        }
+
+        let x_left = x - 1
+        if (x_left < 0) {
+            x_left = CW.grid_size - 1
+        }
+
+        let x_right = x + 1
+        if (x_right >= CW.grid_size) {
+            x_right = 0
         }
 
         // North
-        if (CW.grid[x][y2].alive) {
+        if (CW.grid[x][y_up].alive) {
             num += 1
-        }
-
-        x2 = x - 1
-        if (x2 < 0) {
-            x2 = CW.grid_size - 1
         }
 
         // North West
-        if (CW.grid[x2][y2].alive) {
+        if (CW.grid[x_left][y_up].alive) {
             num += 1
-        }
-
-        x2 = x + 1
-        if (x2 >= CW.grid_size) {
-            x2 = 0
         }
 
         // North East
-        if (CW.grid[x2][y2].alive) {
+        if (CW.grid[x_right][y_up].alive) {
             num += 1
-        }
-
-        y2 = y + 1
-        if (y2 >= CW.grid_size) {
-            y2 = 0
         }
 
         // South
-        if (CW.grid[x][y2].alive) {
+        if (CW.grid[x][y_down].alive) {
             num += 1
         }
 
-        x2 = x - 1
-        if (x2 < 0) {
-            x2 = CW.grid_size - 1
+        // South West
+        if (CW.grid[x_left][y_down].alive) {
+            num += 1
         }
 
-        // South West
-        if (CW.grid[x2][y2].alive) {
+        // South East
+        if (CW.grid[x_right][y_down].alive) {
             num += 1
         }
 
         // West
-        if (CW.grid[x2][y].alive) {
-            num += 1
-        }
-
-        x2 = x + 1
-        if (x2 >= CW.grid_size) {
-            x2 = 0
-        }
-
-        // South East
-        if (CW.grid[x2][y2].alive) {
+        if (CW.grid[x_left][y].alive) {
             num += 1
         }
 
         // East
-        if (CW.grid[x2][y].alive) {
+        if (CW.grid[x_right][y].alive) {
             num += 1
-        }
+        }        
 
         let item = CW.grid[x][y]
         item.change_to = "nothing"
