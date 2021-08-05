@@ -15,22 +15,21 @@ CW.make_grid = function () {
   CW.grid_el.innerHTML = ""
   CW.grid = []
   let size = CW.size / CW.grid_size
-  let x = 0
-  let y = 0
-  let row = []
 
-  for (let yy = 0; yy < CW.grid_size; yy++) {
-    for (let xx = 0; xx < CW.grid_size; xx++) {
+  for (let y = 0; y < CW.grid_size; y++) {
+    let row = []
+    let row_el = document.createElement("div")
+    row_el.classList.add("row")
+
+    for (let x = 0; x < CW.grid_size; x++) {
       let item = {}
-      item.y = yy
-      item.x = xx
+      item.y = y
+      item.x = x
       item.alive = CW.random_int(0, 1) === 1
 
       let block = document.createElement("div")
       block.style.width = size + "px"
       block.style.height = size + "px"
-      block.style.left = x + "px"
-      block.style.top = y + "px"
       block.classList.add("block")
       
       if (item.alive) {
@@ -39,27 +38,22 @@ CW.make_grid = function () {
 
       item.block = block
       row.push(item)
-      CW.grid_el.append(block)
-
-      x += size
+      row_el.append(block)
     }
 
     CW.grid.push(row)
-    row = []
-
-    x = 0
-    y += size
+    CW.grid_el.append(row_el)
   }
 }
 
 CW.random_int = function (min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min)
+    return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 CW.start = function () {
-  CW.interval = setInterval(function () {
-      CW.iteration()
-  }, CW.speed)
+    CW.interval = setInterval(function () {
+        CW.iteration()
+    }, CW.speed)
 }
 
 CW.iteration = function () {
@@ -150,7 +144,6 @@ CW.iteration = function () {
     }
 
     if (!changed) {
-        console.log("Game Ended!")
         clearInterval(CW.interval)
         return
     }
