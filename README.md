@@ -1,1 +1,1 @@
-![](https://i.imgur.com/qTLVa2k.png)
+Click the link in the description to run the game.
