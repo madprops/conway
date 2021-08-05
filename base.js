@@ -7,6 +7,7 @@ CW.init = function (a) {
   CW.size = parseInt(style.getPropertyValue("--size"))
   CW.grid_el = document.querySelector("#grid")
   CW.make_grid()
+  CW.key_detection()
   CW.start()
 }
 
@@ -57,6 +58,11 @@ CW.random_int = function (min, max) {
 
 CW.start = function () {
   CW.interval = setInterval(function () {
+      CW.iteration()
+  }, CW.speed)
+}
+
+CW.iteration = function () {
     let changed = false
 
     for (let x = 0; x < CW.grid_size; x++) {
@@ -150,7 +156,6 @@ CW.start = function () {
     }
 
     CW.update()
-  }, CW.speed)
 }
 
 CW.update = function () {
@@ -165,4 +170,17 @@ CW.update = function () {
             }
         }
     }
+}
+
+CW.key_detection = function () {
+    document.addEventListener('keyup', function (e) {
+        if (e.key === " ") {
+            if (!CW.paused) {
+                CW.paused = true
+                clearInterval(CW.interval)
+            } else {
+                CW.iteration()
+            }
+        }
+    })
 }
