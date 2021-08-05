@@ -12,6 +12,7 @@ body, html {
   height: 100%;
   font-family: monospace;
   background-color: var(--color_1);
+  color: white;
 }
 
 #main {
@@ -23,13 +24,17 @@ body, html {
   flex-direction: column;
 }
 
+#number {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
 #image {
   width: 250px;
 }
 
 #info {
   font-family: sans-serif;
-  color: white;
   font-size: 16px;
   text-align: center;
   margin: 25px;

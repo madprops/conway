@@ -6,6 +6,7 @@ CW.init = function (a) {
   let style = getComputedStyle(document.body)
   CW.size = parseInt(style.getPropertyValue("--size"))
   CW.grid_el = document.querySelector("#grid")
+  CW.number_el = document.querySelector("#number")
   CW.make_grid()
   CW.start()
 }
@@ -151,6 +152,8 @@ CW.iteration = function () {
 }
 
 CW.update = function () {
+  let number = 0
+
   for (let row of CW.grid) {
     for (let item of row) {
       if (item.change_to === "dead") {
@@ -160,6 +163,12 @@ CW.update = function () {
         item.block.classList.add("alive")
         item.alive = true
       }
+
+      if (item.alive) {
+        number += item.x + item.y
+      }
     }
   }
+
+  CW.number_el.textContent = number
 }
