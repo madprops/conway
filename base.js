@@ -155,6 +155,7 @@ CW.start = function () {
     }
 
     if (!changed) {
+        console.log("Game Ended!")
         clearInterval(CW.interval)
         return
     }
