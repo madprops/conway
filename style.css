@@ -1,0 +1,58 @@
+:root {
+  --size: 720px;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  height: 100%;
+  font-family: monospace;
+}
+
+#main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(112, 60, 209);
+  overflow: hidden;
+}
+
+#image {
+  width: 250px;
+}
+
+#info {
+  font-family: sans-serif;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  margin: 25px;
+}
+
+#grid {
+  background-color: rgb(86, 86, 211);
+  width: var(--size);
+  height: var(--size);
+  position: relative;
+  user-select: none;
+  border-bottom-left-radius: 1%;
+  border-bottom-right-radius: 1%;
+}
+
+.block {
+  box-shadow: 0 0 0.29rem rgb(90, 221, 85);
+  background-color: rgb(151, 59, 204);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 33.3%;
+}
+
+.block.alive {
+  background-color: rgb(200, 200, 81);
+}
