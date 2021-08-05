@@ -169,10 +169,11 @@ CW.key_detection = function () {
     document.addEventListener('keyup', function (e) {
         if (e.key === " ") {
             if (!CW.paused) {
-                CW.paused = true
                 clearInterval(CW.interval)
+                CW.paused = true
             } else {
-                CW.iteration()
+                CW.start()
+                CW.paused = false
             }
         }
     })
