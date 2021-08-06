@@ -24,13 +24,8 @@ body, html {
   flex-direction: column;
 }
 
-#number {
-  font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
 #image {
+  margin-top: 40px;
   width: 250px;
 }
 
